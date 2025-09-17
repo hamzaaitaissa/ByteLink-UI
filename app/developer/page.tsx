@@ -1,12 +1,24 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Twitter, Mail, Code, Rocket, Star, Users, Globe, createLucideIcon } from "lucide-react"
-import Link from "next/link"
-import { AuroraBackground } from "@/components/ui/aurora-background"
-import { motion } from "motion/react"
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Code,
+  Rocket,
+  Star,
+  Users,
+  Globe,
+  createLucideIcon,
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { motion } from "motion/react";
 
 export default function DeveloperPage() {
   const skills = [
@@ -21,18 +33,16 @@ export default function DeveloperPage() {
     "C#",
     "ASP.NET Core",
     ".NET Core",
-    "Docker",
-    
-  ]
+  ];
 
-const XIcon = createLucideIcon("XIcon", [
-  [
-    "path",
-    {
-      d: "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z",
-    },
-  ],
-]);
+  const XIcon = createLucideIcon("XIcon", [
+    [
+      "path",
+      {
+        d: "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z",
+      },
+    ],
+  ]);
   // const achievements = [
   //   { icon: Code, value: "50+", label: "Projects Built", color: "from-blue-500 to-cyan-500" },
   //   { icon: Users, value: "100K+", label: "Users Impacted", color: "from-purple-500 to-pink-500" },
@@ -42,23 +52,31 @@ const XIcon = createLucideIcon("XIcon", [
 
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "#", color: "hover:text-white" },
-    { icon: Linkedin, label: "LinkedIn", href: "#", color: "hover:text-blue-400" },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "#",
+      color: "hover:text-blue-400",
+    },
     { icon: XIcon, label: "X", href: "#", color: "hover:text-white-500" },
-  ]
+  ];
 
   return (
     <AuroraBackground>
       <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 md:p-6 bg-transparent">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
             <Code className="w-5 h-5 text-white" />
           </div>
-          <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <span className="text-2xl font-bold bg-gradient-to-r from-gray-500 via-neutral-300 to-gray-500 bg-clip-text text-transparent hover:text-white transition">
             ByteLink
           </span>
         </Link>
         <Link href="/">
-          <Button variant="ghost" className="glass hover:glass-card transition-all duration-300 text-white">
+          <Button
+            variant="ghost"
+            className="glass hover:glass-card transition-all duration-300 text-white"
+          >
             Back to App
           </Button>
         </Link>
@@ -72,22 +90,32 @@ const XIcon = createLucideIcon("XIcon", [
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-10 items-center justify-center px-4 md:px-10 max-w-6xl mx-auto pt-24 md:pt-32 pb-10"
+        className="relative flex flex-col gap-10 items-center justify-center px-4 md:px-10 max-w-6xl mx-auto pt-15 md:pt-20 pb-10"
       >
         <div className="text-center">
           <motion.div
-            className="w-32 h-32 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl"
+            className="w-32 h-32 rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl"
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Code className="w-16 h-16 text-white" />
+            <Image
+              src="/20240413_174914.jpg"
+              alt="Hamza Ait Aissa"
+              width={32}
+              height={32}
+              className="w-full h-full object-cover rounded-full"
+            />{" "}
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">Hamza Ait Aissa</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+            Hamza Ait Aissa
+          </h1>
           <p className="text-xl md:text-2xl text-neutral-200 max-w-3xl mx-auto leading-relaxed">
-           I'm a developer passionate about crafting meaningful digital experiences, driven by a love for technology, minimalism, and their intersection.
+            Aspiring Software engineer passionate about crafting meaningful digital
+            experiences, driven by a love for technology, minimalism, and their
+            intersection.
           </p>
         </div>
-{/* 
+        {/* 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl">
           {achievements.map((achievement, index) => (
             <motion.div
@@ -110,7 +138,7 @@ const XIcon = createLucideIcon("XIcon", [
         </div> */}
 
         <Card className="glass-card p-5 border-0 w-full max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-100 bg-clip-text ">
             Tech Arsenal
           </h2>
           <div className="flex flex-wrap gap-3 justify-center">
@@ -131,10 +159,10 @@ const XIcon = createLucideIcon("XIcon", [
         </Card>
 
         <Card className="glass-card p-5 border-0 w-full max-w-2xl">
-          <h2 className="text-3xl font-bold mb-5 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-5 text-center text-gray-100">
             Let's Connect
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {socialLinks.map((link, index) => (
               <motion.div
                 key={link.label}
@@ -167,5 +195,5 @@ const XIcon = createLucideIcon("XIcon", [
         </Card>
       </motion.div>
     </AuroraBackground>
-  )
+  );
 }
