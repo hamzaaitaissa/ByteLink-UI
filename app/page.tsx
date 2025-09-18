@@ -9,25 +9,48 @@ import { useToast } from "@/hooks/use-toast";
 import NextLink from "next/link";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "framer-motion";
+import { apiService } from "@/Services/api";
+import { Toaster } from "@/components/ui/toaster";
+import { parseApiError } from "@/utilities/errorApi";
 
 export default function HomePage() {
   const [url, setUrl] = useState("");
   const [shortenedUrl, setShortenedUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [longUrlText, setLongUrlText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { toast } = useToast();
+  interface ShortenedUrl {
+    id: string;
+    shortCode: string;
+    ihortUrl: string;
+    longUrl: string;
+  }
 
   const handleShorten = async () => {
     if (!url) return;
 
     setIsLoading(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    const shortCode = Math.random().toString(36).substring(2, 8);
-    setShortenedUrl(`bytelink.dev/${shortCode}`);
-    setShowResult(true);
-    setIsLoading(false);
+    try {
+      const response = await apiService.post<ShortenedUrl>(
+        "/api/ShortenedUrl",
+        {
+          longUrl: url,
+        }
+      );
+      console.log(response);
+      if (response) {
+        setShortenedUrl(`bytelink.dev/${response.shortCode}`);
+        setLongUrlText(url);
+        setShowResult(true);
+        setErrorMessage("");
+      }
+    } catch (error : any) {
+      setErrorMessage(parseApiError(error));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const copyToClipboard = async () => {
@@ -40,6 +63,16 @@ export default function HomePage() {
 
   return (
     <AuroraBackground>
+      <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-transparent">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
+            <Zap className="w-5 h-5 text-white" />
+          </div>
+          <span className="cursor-pointer text-2xl font-bold bg-gradient-to-r from-gray-500 via-neutral-300 to-gray-500 bg-clip-text text-transparent hover:text-white transition">
+            ByteLink
+          </span>
+        </div>
+      </nav>
       <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-transparent">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
@@ -67,9 +100,9 @@ export default function HomePage() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-8 items-center justify-center px-4 max-w-4xl mx-auto pt-24 md:pt-32 pb-10"
+        className="relative flex flex-col gap-4 items-center justify-center px-4 max-w-4xl mx-auto pt-24 md:pt-32 pb-10"
       >
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Shorten URLs with
             <br />
@@ -88,7 +121,7 @@ export default function HomePage() {
               <Input
                 placeholder="Paste your long URL here..."
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={(e) => {setUrl(e.target.value); setErrorMessage("")}}
                 className="flex-1 h-16 text-lg glass border-0 focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 text-white placeholder:text-neutral-400"
               />
               <Button
@@ -127,7 +160,7 @@ export default function HomePage() {
                       <label className="text-sm text-neutral-400">
                         Original URL
                       </label>
-                      <p className="text-white truncate">{url}</p>
+                      <p className="text-white truncate">{longUrlText}</p>
                     </div>
                     <div>
                       <label className="text-sm text-neutral-400">
@@ -151,6 +184,7 @@ export default function HomePage() {
               </motion.div>
             )}
           </div>
+          {<span className="text-red-400 text-sm mx-auto font-bold">{errorMessage}</span>}
         </Card>
       </motion.div>
     </AuroraBackground>
