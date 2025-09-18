@@ -51,11 +51,11 @@ export default function DeveloperPage() {
   // ]
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "#", color: "hover:text-white" },
+    { icon: Github, label: "GitHub", href: "https://github.com/hamzaaitaissa", color: "hover:text-orange-300" },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/in/hamza-ait-aissa/",
       color: "hover:text-blue-400",
     },
     { icon: XIcon, label: "X", href: "#", color: "hover:text-white-500" },
@@ -150,7 +150,7 @@ export default function DeveloperPage() {
                 transition={{ delay: 0.05 * index, duration: 0.3 }}
                 whileHover={{ scale: 1.1 }}
               >
-                <Badge className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 px-4 py-2 text-sm">
+                <Badge className=" bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 px-4 py-2 text-sm">
                   {skill}
                 </Badge>
               </motion.div>
@@ -173,7 +173,7 @@ export default function DeveloperPage() {
               >
                 <Button
                   variant="ghost"
-                  className={`glass hover:glass-card transition-all duration-300 w-full h-16 flex-col space-y-1 text-neutral-300 ${link.color}`}
+                  className={`cursor-pointer glass hover:glass-card transition-all duration-300 w-full h-16 flex-col space-y-1 text-neutral-300 ${link.color}`}
                 >
                   <link.icon className="w-6 h-6" />
                   <span className="text-xs">{link.label}</span>
@@ -188,7 +188,7 @@ export default function DeveloperPage() {
               <span>alex@bytelink.dev</span>
             </div> */}
             <div className="flex items-center justify-center space-x-2 text-neutral-300">
-              <Globe className="w-5 h-5 text-purple-400" />
+              <Globe className="w-5 h-5 text-cyan-700" />
               <span>Morocco, Casablanca</span>
             </div>
           </div>
