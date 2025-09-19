@@ -63,16 +63,7 @@ export default function HomePage() {
 
   return (
     <AuroraBackground>
-      <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-transparent">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
-            <Zap className="w-5 h-5 text-white" />
-          </div>
-          <span className="cursor-pointer text-2xl font-bold bg-gradient-to-r from-gray-500 via-neutral-300 to-gray-500 bg-clip-text text-transparent hover:text-white transition">
-            ByteLink
-          </span>
-        </div>
-      </nav>
+      
       <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-transparent">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
