@@ -14,6 +14,16 @@ import {
   Users,
   Globe,
   createLucideIcon,
+  Layers,
+  Terminal,
+  Palette,
+  Server,
+  Database,
+  Cloud,
+  Container,
+  Settings,
+  Zap,
+  GitBranch,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,17 +32,18 @@ import { motion } from "motion/react";
 
 export default function DeveloperPage() {
   const skills = [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "SQL SERVER",
-    "AZURE",
-    "Docker",
-    "C#",
-    "ASP.NET Core",
-    ".NET Core",
+    { name: "Next.js", icon: Layers, color: "from-gray-600 to-black" },
+    { name: "React", icon: Code, color: "from-blue-500 to-cyan-500" },
+    { name: "TypeScript", icon: Terminal, color: "from-blue-600 to-blue-800" },
+    { name: "Tailwind CSS", icon: Palette, color: "from-cyan-500 to-blue-500" },
+    { name: "Node.js", icon: Server, color: "from-green-600 to-green-800" },
+    { name: "SQL SERVER", icon: Database, color: "from-red-600 to-red-800" },
+    { name: "Azure", icon: Cloud, color: "from-blue-500 to-blue-700" },
+    { name: "Docker", icon: Container, color: "from-blue-500 to-blue-700" },
+    { name: "C#", icon: Settings, color: "from-purple-600 to-indigo-600" },
+    { name: "ASP.NET Core", icon: Globe, color: "from-blue-700 to-purple-700" },
+    { name: ".NET Core", icon: Zap, color: "from-purple-500 to-blue-500" },
+    { name: "Git", icon: GitBranch, color: "from-orange-500 to-red-500" },
   ];
 
   const XIcon = createLucideIcon("XIcon", [
@@ -51,7 +62,12 @@ export default function DeveloperPage() {
   // ]
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com/hamzaaitaissa", color: "hover:text-orange-300" },
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com/hamzaaitaissa",
+      color: "hover:text-orange-300",
+    },
     {
       icon: Linkedin,
       label: "LinkedIn",
@@ -110,9 +126,9 @@ export default function DeveloperPage() {
             Hamza Ait Aissa
           </h1>
           <p className="text-xl md:text-2xl text-neutral-200 max-w-3xl mx-auto leading-relaxed">
-            Aspiring Software engineer passionate about crafting meaningful digital
-            experiences, driven by a love for technology, minimalism, and their
-            intersection.
+            Aspiring Software engineer passionate about crafting meaningful
+            digital experiences, driven by a love for technology, minimalism,
+            and their intersection.
           </p>
         </div>
         {/* 
@@ -141,18 +157,26 @@ export default function DeveloperPage() {
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-100 bg-clip-text ">
             Tech Arsenal
           </h2>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            {" "}
             {skills.map((skill, index) => (
               <motion.div
-                key={skill}
+                key={skill.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.05 * index, duration: 0.3 }}
                 whileHover={{ scale: 1.1 }}
               >
-                <Badge className=" bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 px-4 py-2 text-sm">
-                  {skill}
-                </Badge>
+                <div className="glass-card p-4 border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10 text-center">
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <skill.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-sm text-white font-medium">
+                    {skill.name}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
