@@ -36,10 +36,7 @@ export default function DeveloperPage() {
     { name: "React", icon: Code, color: "from-blue-500 to-cyan-500" },
     { name: "TypeScript", icon: Terminal, color: "from-blue-600 to-blue-800" },
     { name: "Tailwind CSS", icon: Palette, color: "from-cyan-500 to-blue-500" },
-    { name: "Node.js", icon: Server, color: "from-green-600 to-green-800" },
-    { name: "SQL SERVER", icon: Database, color: "from-red-600 to-red-800" },
     { name: "Azure", icon: Cloud, color: "from-blue-500 to-blue-700" },
-    { name: "Docker", icon: Container, color: "from-blue-500 to-blue-700" },
     { name: "C#", icon: Settings, color: "from-purple-600 to-indigo-600" },
     { name: "ASP.NET Core", icon: Globe, color: "from-blue-700 to-purple-700" },
     { name: ".NET Core", icon: Zap, color: "from-purple-500 to-blue-500" },
@@ -153,35 +150,62 @@ export default function DeveloperPage() {
           ))}
         </div> */}
 
-        <Card className="glass-card p-5 border-0 w-full max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-100 bg-clip-text ">
-            Tech Arsenal
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
-            {" "}
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.05 * index, duration: 0.3 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="glass-card p-4 border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10 text-center">
-                  <div
-                    className={`w-12 h-12 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <skill.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-sm text-white font-medium">
-                    {skill.name}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Card>
+        <Card className="glass-card p-8 border-0 w-full max-w-5xl">
+            <h2 className="text-3xl font-bold mb-12 text-center text-gray-100">
+              Tech Arsenal in <code className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">this Project;</code>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{
+                    delay: 0.03 * index,
+                    duration: 0.6,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -12,
+                    transition: { duration: 0.2, type: "spring", stiffness: 400 },
+                  }}
+                  className="group cursor-pointer"
+                >
+                  <div className="relative">
+                    {/* Floating card with minimal design */}
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/[0.08] hover:border-white/20 transition-all duration-700 hover:bg-white/[0.12] p-5 text-center group-hover:shadow-2xl group-hover:shadow-white/10">
+                      {/* Subtle inner glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-3xl" />
 
+                      {/* Animated gradient border on hover */}
+                      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-sm -z-10" />
+
+                      <div className="relative z-10 space-y-3">
+                        {/* Icon with sophisticated gradient and glow */}
+                        <div className="relative mx-auto w-12 h-12 group-hover:scale-110 transition-all duration-500">
+                          <div
+                            className={`absolute inset-0 bg-gradient-to-br ${skill.color} rounded-2xl blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-500`}
+                          />
+                          <div
+                            className={`relative w-full h-full bg-gradient-to-br ${skill.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500`}
+                          >
+                            <skill.icon className="w-6 h-6 text-white drop-shadow-sm" />
+                          </div>
+                        </div>
+
+                        {/* Refined typography */}
+                        <div className="text-xs font-medium text-white/90 group-hover:text-white transition-colors duration-300 tracking-wide">
+                          {skill.name}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </Card>
         <Card className="glass-card p-5 border-0 w-full max-w-2xl">
           <h2 className="text-3xl font-bold mb-5 text-center text-gray-100">
             Let's Connect
@@ -198,7 +222,7 @@ export default function DeveloperPage() {
                 <Button
                   variant="ghost"
                   className={`cursor-pointer glass hover:glass-card transition-all duration-300 w-full h-16 flex-col space-y-1 text-neutral-300 ${link.color}`}
-                >
+                onClick={()=>window.open(link.href, '_blank')}>
                   <link.icon className="w-6 h-6" />
                   <span className="text-xs">{link.label}</span>
                 </Button>

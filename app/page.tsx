@@ -62,8 +62,7 @@ export default function HomePage() {
   };
 
   return (
-    <AuroraBackground>
-      
+  <AuroraBackground>
       <nav className="fixed md:absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-6 bg-transparent">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-950 to-purple-950 rounded-lg flex items-center justify-center">
@@ -94,89 +93,77 @@ export default function HomePage() {
         className="relative flex flex-col gap-4 items-center justify-center px-4 max-w-4xl mx-auto pt-24 md:pt-32 pb-10"
       >
         <div className="text-center mb-4">
-          <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-7xl font-bold text-gray-200 mb-6 leading-tight">
             Shorten URLs with
             <br />
-            <span className="text-white bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Premium Style
-            </span>
+            <span className="text-gray-200">Premium Style</span>
           </h1>
           <p className="text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto leading-relaxed">
             Stop sharing long scary links, short is better :)
           </p>
         </div>
 
-        <Card className="glass-card p-8 border-0 shadow-2xl w-full max-w-3xl">
-          <div className="space-y-6">
-            <div className="flex flex-col md:flex-row gap-4">
-              <Input
-                placeholder="Paste your long URL here..."
-                value={url}
-                onChange={(e) => {setUrl(e.target.value); setErrorMessage("")}}
-                className="flex-1 h-16 text-lg glass border-0 focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 text-white placeholder:text-neutral-400"
-              />
-              <Button
-                onClick={handleShorten}
-                disabled={!url || isLoading}
-                className="h-16 px-8 cursor-pointer 
-             bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600
-             hover:from-cyan-500 hover:via-blue-600 hover:to-indigo-700
-             text-white font-semibold rounded-xl
-             transition-all duration-300 shadow-lg 
-             hover:shadow-indigo-500/30 hover:scale-105"
-              >
-                {isLoading ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span>Shortening...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-5 h-5" />
-                    <span>Shorten It!</span>
-                  </div>
-                )}
-              </Button>
-            </div>
-
-            {showResult && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="glass p-6 border-blue-500/20">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm text-neutral-400">
-                        Original URL
-                      </label>
-                      <p className="text-white truncate">{longUrlText}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm text-neutral-400">
-                        Shortened URL
-                      </label>
-                      <div className="flex items-center justify-between bg-black/20 rounded-lg p-4 mt-1">
-                        <span className="text-blue-400 font-mono text-lg">
-                          {shortenedUrl}
-                        </span>
-                        <Button
-                          size="sm"
-                          onClick={copyToClipboard}
-                          className="cursor-pointer bg-blue-900 hover:bg-blue-700 text-white transition"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            )}
+        <div className="w-full max-w-2xl mb-4">
+          <div className="flex items-center bg-white/90  rounded-full p-2  ">
+            <Input
+              placeholder="Paste your long URL here..."
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value)
+                setErrorMessage("")
+              }}
+              className="flex-1 bg-transparent text-gray-800 placeholder:text-gray-500  text-lg px-4 py-3"
+            />
+            <Button
+              onClick={handleShorten}
+              disabled={!url || isLoading}
+              className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
+            >
+              {isLoading ? (
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Shortening...</span>
+                </div>
+              ) : (
+                "Shorten URL"
+              )}
+            </Button>
           </div>
-          {<span className="text-red-400 text-sm mx-auto font-bold">{errorMessage}</span>}
-        </Card>
+          {errorMessage && <p className="text-red-400 text-sm mt-2 text-center font-medium">{errorMessage}</p>}
+        </div>
+
+        {showResult && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-2xl"
+          >
+            <Card className="bg-white/90 backdrop-blur-sm border border-white/20 shadow-2xl rounded-2xl p-6">
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium text-gray-600 mb-1 block">Original URL</label>
+                  <div className="bg-gray-50 rounded-lg p-3 border">
+                    <p className="text-gray-800 truncate text-sm">{longUrlText}</p>
+                  </div>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-gray-600 mb-1 block">Shortened URL</label>
+                  <div className="flex items-center bg-gray-50 rounded-lg p-3 border">
+                    <span className="text-blue-600 font-mono text-lg flex-1">{shortenedUrl}</span>
+                    <Button
+                      size="sm"
+                      onClick={copyToClipboard}
+                      className="bg-gray-900 hover:bg-gray-800 text-white ml-3 rounded-lg"
+                    >
+                      <Copy className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        )}
       </motion.div>
     </AuroraBackground>
   );
