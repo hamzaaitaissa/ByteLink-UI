@@ -10,8 +10,7 @@ import { Toaster } from "@/components/ui/toaster"
 export const metadata: Metadata = {
   title: "ByteLink - Premium URL Shortener",
   description:
-    "Transform your long URLs into sleek, shareable links with ByteLink - the premium URL shortener for modern professionals.",
-  generator: "v0.app",
+    "ByteLink is a modern, minimalistic URL shortener.It allows users to quickly shorten long URLs and share them with ease.",
 }
 
 export default function RootLayout({
