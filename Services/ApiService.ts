@@ -14,7 +14,6 @@ export class ApiService {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    console.log(process.env.BACKEND_LINK)
     let url = `${this.baseUrl}${endpoint}`;
     const defaultHeaders: Record<string, string> = {
       "Content-Type": "application/json",
