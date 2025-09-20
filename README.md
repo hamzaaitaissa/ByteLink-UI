@@ -14,12 +14,12 @@ One day a friend of mine sent me a long link with all sort of charachters that t
 - 🌈 Modern UI with minimalistic aesthetics
 - 🔒 Built with  
     ✨ Frontend: Next.js, TypeScript, Tailwind CSS, and a LOT OF Lucide icons
-    ⚙️ Backend: .NET Core, ASP.NET Core, C#, SQL SERVER...
+    ⚙️ Backend: .NET 9, ASP.NET Core, C#, SQL SERVER...
        Curious about the Backend 🤔? here is the link to the Repo: https://github.com/hamzaaitaissa/ByteLink
 
 ## Quick Demo
-in this demo I used a Google Map link as an example:
-![ByteLink-UI-Demo](https://github.com/user-attachments/assets/1466bed6-9bd5-45ef-9c0c-3259c4bd4c64)
+In this demo I used a Google Maps link as an example:
+![ByteLink-UI-Demo](https://github.com/user-attachments/assets/20030c64-c425-4626-8bd2-27576deceba3)
 
 ## Getting Started
 
