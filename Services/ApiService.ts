@@ -4,16 +4,17 @@ export class ApiService {
   private baseUrl: string;
 
   constructor() {
-    // this.baseUrl =
-    //   "https://bytelink-gycefrf6chgabwep.westeurope-01.azurewebsites.net";
+
+
         this.baseUrl =
-      "https://localhost:7054";
+      process.env.NEXT_PUBLIC_BACKEND_LINK ?? "https://localhost:7054";
   }
 
   private async fetchWithErrorHandeling<T>(
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
+    console.log(process.env.BACKEND_LINK)
     let url = `${this.baseUrl}${endpoint}`;
     const defaultHeaders: Record<string, string> = {
       "Content-Type": "application/json",

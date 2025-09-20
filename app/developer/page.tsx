@@ -39,7 +39,7 @@ export default function DeveloperPage() {
     { name: "Azure", icon: Cloud, color: "from-blue-500 to-blue-700" },
     { name: "C#", icon: Settings, color: "from-purple-600 to-indigo-600" },
     { name: "ASP.NET Core", icon: Globe, color: "from-blue-700 to-purple-700" },
-    { name: ".NET Core", icon: Zap, color: "from-purple-500 to-blue-500" },
+    { name: ".NET 9", icon: Zap, color: "from-purple-500 to-blue-500" },
     { name: "Git", icon: GitBranch, color: "from-orange-500 to-red-500" },
   ];
 
