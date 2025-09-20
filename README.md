@@ -14,7 +14,7 @@ One day a friend of mine sent me a long link with all sort of charachters that t
 - 🌈 Modern UI with minimalistic aesthetics
 - 🔒 Built with  
     ✨ Frontend: Next.js, TypeScript, Tailwind CSS, and a LOT OF Lucide icons
-    ⚙️ Backend: .NET Core, ASP.NET Core, C#, SQL SERVER...
+    ⚙️ Backend: .NET 9, ASP.NET Core, C#, SQL SERVER...
        Curious about the Backend 🤔? here is the link to the Repo: https://github.com/hamzaaitaissa/ByteLink
 
 ## Quick Demo
