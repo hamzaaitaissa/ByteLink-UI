@@ -1,6 +1,6 @@
 # ByteLink
 
-One day a friend of mine sent me a long link with all sort of charachters that takes up the whole phone screen, so I thought about creating this solution:
+One day a friend of mine sent me a long link with all sort of charachters that takes up the whole phone screen, so I thought about creating this solution:<br/>
   ByteLink is a modern, minimalistic URL shortener.  
   It allows users to quickly shorten long URLs and share them with ease.  
   The app features a beautiful UI, developer profile, and seamless clipboard copy functionality.
