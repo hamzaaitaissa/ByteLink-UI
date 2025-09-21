@@ -90,7 +90,7 @@ export default function HomePage() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4 max-w-4xl mx-auto pt-24 md:pt-32 pb-10"
+        className="relative flex flex-col gap-4 items-center justify-center px-4 max-w-4xl mx-auto   pb-10"
       >
         <div className="text-center mb-4">
           <h1 className="text-4xl md:text-7xl font-bold text-gray-200 mb-6 leading-tight">
