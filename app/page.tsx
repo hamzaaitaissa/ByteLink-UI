@@ -81,6 +81,13 @@ export default function HomePage() {
           </Button>
         </NextLink>
       </nav>
+      <section>
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-30">
+          <div className="bg-yellow-200 text-yellow-900 px-4 py-2 rounded-lg shadow-md flex items-center space-x-2">
+            <span className="font-medium">⚠️ Note: If the site is unavailable, the backend server has been temporarily stopped on Azure to reduce costs. Please try again later — thank you for your patience!</span>
+          </div>
+        </div>
+      </section>
 
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}

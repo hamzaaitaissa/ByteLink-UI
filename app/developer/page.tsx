@@ -106,19 +106,18 @@ export default function DeveloperPage() {
         className="relative flex flex-col gap-10 items-center justify-center px-4 md:px-10 max-w-6xl mx-auto pt-15 md:pt-20 pb-10"
       >
         <div className="text-center">
-          <motion.div
-            className="w-32 h-32 rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
+          <div
+            className="w-32 h-32 rounded-full mx-auto mb-8 flex items-center justify-center "
+            
           >
             <Image
-              src="/20240413_174914.jpg"
+              src="/me_pixel.png"
               alt="Hamza Ait Aissa"
               width={32}
               height={32}
-              className="w-full h-full object-cover rounded-full"
+              className="w-full h-ful object-cover"
             />{" "}
-          </motion.div>
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
             Hamza Ait Aissa
           </h1>
